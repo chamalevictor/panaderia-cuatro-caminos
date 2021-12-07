@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string-array name="Clientes">
+    <item>Gaby</item>
+    <item>Ilda</item>
+    <item>Mario</item>
+    <item>Nueva Delicias</item>
+    <item>Angela</item>
+    <item>Chayo</item>
+    <item>Clemente</item>
+    <item>Doña Lina</item>
+    </string-array>
+</resources>
