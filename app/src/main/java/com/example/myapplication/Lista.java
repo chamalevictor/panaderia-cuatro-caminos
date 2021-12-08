@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class Lista extends AppCompatActivity {
 
     // Campos que llena el usuario.
@@ -18,6 +20,7 @@ public class Lista extends AppCompatActivity {
     EditText panManteca;
 
     // Campos de la tabla que se llenan automaticamente.
+    TextView viewFecha;
     Spinner clientes;
     TextView viewCliente;
     TextView viewFrances;
@@ -49,6 +52,7 @@ public class Lista extends AppCompatActivity {
 
 
 //      Vistas que se van agregando a la orden.
+        viewFecha = (TextView)findViewById(R.id.txtFecha);
         viewCliente = (TextView)findViewById(R.id.txtCliente);
         viewFrances = (TextView)findViewById(R.id.txtFrannces);
         viewManteca = (TextView)findViewById(R.id.txtManteca);
@@ -61,12 +65,14 @@ public class Lista extends AppCompatActivity {
 
     public void agregarOrden(View v){
         int total = 0;
+        
+        viewFecha.setText(Calendar.getInstance().getTime().toString());
         viewCliente.setText(clientes.getSelectedItem().toString());
         viewFrances.setText(panFrances.getText());
         viewManteca.setText(panManteca.getText());
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
-        Toast.makeText(this, "Entramos al metodo", Toast.LENGTH_LONG).show();
+
     }
 
 }
