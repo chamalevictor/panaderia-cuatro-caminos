@@ -33,12 +33,17 @@ public class Lista extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
+        /*
+           Colocando el texto para el titulo
+           basado en el boton seleccionado de
+           la actividad anterior.
+         */
         Intent intent = getIntent();
         String listaRecibida = intent.getStringExtra("lista");
-
         TextView titulo = (TextView)findViewById(R.id.titulo);
         titulo.setText("LISTA " + listaRecibida);
 
+        // Lista de clientes con Spinner.
         Spinner mySpinner = (Spinner)findViewById(R.id.clientes);
         ArrayAdapter<String> listaClientes = new ArrayAdapter<String>(Lista.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Clientes));
         listaClientes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -46,12 +51,12 @@ public class Lista extends AppCompatActivity {
         clientes = (Spinner) findViewById(R.id.clientes);
 
 
-//      Campos de cantidades llenados por usuario.
+//      Inicializando Campos de cantidades llenados por usuario.
         panFrances = (EditText) findViewById(R.id.cantidadFrances);
         panManteca = (EditText) findViewById(R.id.cantidadManteca);
 
 
-//      Vistas que se van agregando a la orden.
+//      Inicializando Vistas que se van agregando a la orden.
         viewFecha = (TextView)findViewById(R.id.txtFecha);
         viewCliente = (TextView)findViewById(R.id.txtCliente);
         viewFrances = (TextView)findViewById(R.id.txtFrannces);
