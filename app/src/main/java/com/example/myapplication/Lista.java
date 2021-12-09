@@ -70,8 +70,11 @@ public class Lista extends AppCompatActivity {
 
     public void agregarOrden(View v){
         int total = 0;
-        
+
         viewFecha.setText(Calendar.getInstance().getTime().toString());
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+        df.format("dd/mm/aaaa hh:mm xm", new java.util.Date());
+
         viewCliente.setText(clientes.getSelectedItem().toString());
         viewFrances.setText(panFrances.getText());
         viewManteca.setText(panManteca.getText());
