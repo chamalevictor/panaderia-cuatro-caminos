@@ -8,36 +8,30 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
 public class Lista extends AppCompatActivity {
 
+//  Lista de clientes.
+    Spinner clientes;
+
     // Campos que llena el usuario.
     EditText panFrances;
     EditText panManteca;
-
-    // Campos de la tabla que se llenan automaticamente.
-    TextView viewFecha;
-    Spinner clientes;
-    TextView viewCliente;
-    TextView viewFrances;
-    TextView viewManteca;
-    TextView viewTotal;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista);
 
-        /*
-           Colocando el texto para el titulo
-           basado en el boton seleccionado de
-           la actividad anterior.
-         */
+        // Titulo basado en opcion mañana o tarde.
         Intent intent = getIntent();
         String listaRecibida = intent.getStringExtra("lista");
         TextView titulo = (TextView)findViewById(R.id.titulo);
@@ -55,29 +49,35 @@ public class Lista extends AppCompatActivity {
         panFrances = (EditText) findViewById(R.id.cantidadFrances);
         panManteca = (EditText) findViewById(R.id.cantidadManteca);
 
-
-//      Inicializando Vistas que se van agregando a la orden.
-        viewFecha = (TextView)findViewById(R.id.txtFecha);
-        viewCliente = (TextView)findViewById(R.id.txtCliente);
-        viewFrances = (TextView)findViewById(R.id.txtFrannces);
-        viewManteca = (TextView)findViewById(R.id.txtManteca);
-        viewTotal = (TextView)findViewById(R.id.txtTotal);
-
+        TableLayout tabla = (TableLayout)findViewById(R.id.tabla);
 
     }
-
-
 
     public void agregarOrden(View v){
+//      Inicializando Vistas que se van agregando a la orden.
+        TextView viewFecha = new TextView(this);
+        TextView viewCliente = new TextView(this);
+        TextView viewFrances = new TextView(this);
+        TextView viewManteca = new TextView(this);
+        TextView viewTotal = new TextView(this);
+
         int total = 0;
-        
+        TableRow fila = new TableRow(this);
+
         viewFecha.setText(Calendar.getInstance().getTime().toString());
+        fila.addView(viewFecha);
         viewCliente.setText(clientes.getSelectedItem().toString());
+        fila.addView(viewCliente);
         viewFrances.setText(panFrances.getText());
+        fila.addView(panFrances);
         viewManteca.setText(panManteca.getText());
+        fila.addView(panManteca);
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
-
+        fila.addView(viewTotal);
     }
+
+
+
 
 }
