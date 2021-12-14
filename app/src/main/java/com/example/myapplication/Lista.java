@@ -66,15 +66,16 @@ public class Lista extends AppCompatActivity {
 
         viewFecha.setText(Calendar.getInstance().getTime().toString());
         fila.addView(viewFecha);
-        viewCliente.setText(clientes.getSelectedItem().toString());
+        viewCliente.setText("hello"); //clientes.getSelectedItem().toString()
         fila.addView(viewCliente);
-        viewFrances.setText(panFrances.getText());
+        Toast.makeText(this, "Llegamos hata aquí", Toast.LENGTH_LONG).show();
+        /*viewFrances.setText(panFrances.getText());
         fila.addView(panFrances);
         viewManteca.setText(panManteca.getText());
         fila.addView(panManteca);
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
-        fila.addView(viewTotal);
+        fila.addView(viewTotal);*/
     }
 
 
