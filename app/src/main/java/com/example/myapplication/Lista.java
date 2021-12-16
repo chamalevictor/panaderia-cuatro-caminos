@@ -73,13 +73,13 @@ public class Lista extends AppCompatActivity {
         fila.addView(viewFecha);
         viewCliente.setText(clientes.getSelectedItem().toString()); //clientes.getSelectedItem().toString()
         fila.addView(viewCliente);
-        /*viewFrances.setText(panFrances.getText());
-        fila.addView(panFrances);
+        viewFrances.setText(panFrances.getText().toString());
+        fila.addView(viewFrances);
         viewManteca.setText(panManteca.getText());
-        fila.addView(panManteca);
+        fila.addView(viewManteca);
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
-        fila.addView(viewTotal);*/
+        fila.addView(viewTotal);
         tabla.addView(fila);
         Toast.makeText(this, "Vamos bien", Toast.LENGTH_LONG).show();
     }
