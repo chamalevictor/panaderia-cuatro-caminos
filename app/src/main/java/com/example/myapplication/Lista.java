@@ -19,7 +19,9 @@ import java.util.Calendar;
 
 public class Lista extends AppCompatActivity {
 
-//  Lista de clientes.
+    TableLayout tabla;
+
+    //  Lista de clientes.
     Spinner clientes;
 
     // Campos que llena el usuario.
@@ -49,7 +51,7 @@ public class Lista extends AppCompatActivity {
         panFrances = (EditText) findViewById(R.id.cantidadFrances);
         panManteca = (EditText) findViewById(R.id.cantidadManteca);
 
-        TableLayout tabla = (TableLayout)findViewById(R.id.tabla);
+        tabla = (TableLayout)findViewById(R.id.tabla);
 
     }
 
@@ -65,10 +67,12 @@ public class Lista extends AppCompatActivity {
         TableRow fila = new TableRow(this);
 
         viewFecha.setText(Calendar.getInstance().getTime().toString());
+
+
+
         fila.addView(viewFecha);
-        viewCliente.setText("hello"); //clientes.getSelectedItem().toString()
+        viewCliente.setText(clientes.getSelectedItem().toString()); //clientes.getSelectedItem().toString()
         fila.addView(viewCliente);
-        Toast.makeText(this, "Llegamos hata aquí", Toast.LENGTH_LONG).show();
         /*viewFrances.setText(panFrances.getText());
         fila.addView(panFrances);
         viewManteca.setText(panManteca.getText());
@@ -76,6 +80,8 @@ public class Lista extends AppCompatActivity {
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
         fila.addView(viewTotal);*/
+        tabla.addView(fila);
+        Toast.makeText(this, "Vamos bien", Toast.LENGTH_LONG).show();
     }
 
 
