@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -15,7 +16,10 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Lista extends AppCompatActivity {
 
@@ -66,8 +70,20 @@ public class Lista extends AppCompatActivity {
         int total = 0;
         TableRow fila = new TableRow(this);
 
-        viewFecha.setText(Calendar.getInstance().getTime().toString());
+        Location ubicacion = new Location("");
 
+        Date fecha = Calendar.getInstance().getTime();
+        DateFormat formatoFecha = new SimpleDateFormat("dd-mm-yy hh:mm");
+        /*9DateFormat dateFormat = new java.text.format.DateFormat();//android.text.format.DateFormat.getDateFormat(getApplicationContext());
+        dateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(date);*/
+        //viewFecha.setText(dateFormat.format(date));
+
+        //viewFecha.setText(DateFormat.getDateTimeInstance().format(fecha));
+
+        viewFecha.setText(formatoFecha.format(fecha).toString());
+
+
+        /*viewFecha.setText(Calendar.getInstance().getTime().toString());*/
 
 
         fila.addView(viewFecha);
@@ -81,7 +97,6 @@ public class Lista extends AppCompatActivity {
         viewTotal.setText(Integer.valueOf(total).toString());
         fila.addView(viewTotal);
         tabla.addView(fila);
-        Toast.makeText(this, "Vamos bien", Toast.LENGTH_LONG).show();
     }
 
 
