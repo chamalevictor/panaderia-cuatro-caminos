@@ -70,23 +70,23 @@ public class Lista extends AppCompatActivity {
         int total = 0;
         TableRow fila = new TableRow(this);
 
-        Location ubicacion = new Location("");
+       /* Location ubicacion = new Location("");
 
         Date fecha = Calendar.getInstance().getTime();
-        DateFormat formatoFecha = new SimpleDateFormat("dd-mm-yy hh:mm");
+        DateFormat formatoFecha = new SimpleDateFormat("dd-mm-yy hh:mm");*/
         /*9DateFormat dateFormat = new java.text.format.DateFormat();//android.text.format.DateFormat.getDateFormat(getApplicationContext());
         dateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT).format(date);*/
         //viewFecha.setText(dateFormat.format(date));
 
         //viewFecha.setText(DateFormat.getDateTimeInstance().format(fecha));
 
-        viewFecha.setText(formatoFecha.format(fecha).toString());
+       // viewFecha.setText(formatoFecha.format(fecha).toString());
 
 
         /*viewFecha.setText(Calendar.getInstance().getTime().toString());*/
 
 
-        fila.addView(viewFecha);
+       // fila.addView(viewFecha);
         viewCliente.setText(clientes.getSelectedItem().toString()); //clientes.getSelectedItem().toString()
         fila.addView(viewCliente);
         viewFrances.setText(panFrances.getText().toString());
@@ -96,7 +96,8 @@ public class Lista extends AppCompatActivity {
         total = (Integer.parseInt(panFrances.getText().toString())+Integer.parseInt(panManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
         fila.addView(viewTotal);
-        tabla.addView(fila);
+        tabla.addView(fila, 1);
+
     }
 
 
