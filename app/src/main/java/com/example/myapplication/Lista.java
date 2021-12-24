@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -60,6 +62,8 @@ public class Lista extends AppCompatActivity {
 
     }
 
+
+
     public void agregarOrden(View v){
 
 
@@ -69,10 +73,12 @@ public class Lista extends AppCompatActivity {
         TextView viewFrances = new TextView(this);
         TextView viewManteca = new TextView(this);
         TextView viewTotal = new TextView(this);
+        ImageButton viewDelete = new ImageButton(this);
         TableRow fila = new TableRow(this);
         int total = 0;
 
-
+//      Detectando campos vacios.
+        viewDelete.setBackgroundResource(R.drawable.delete);
         if(panFrances.getText().toString().equals(""))
             viewFrances.setText("0");
         else
@@ -83,12 +89,34 @@ public class Lista extends AppCompatActivity {
         else
             viewManteca.setText(panManteca.getText());
 
-
+//      Obteniendo fecha y dandole formato.
         Date fecha = Calendar.getInstance().getTime();
         DateFormat formatoFecha = new SimpleDateFormat("dd-MM-yy hh:mm");
-
         viewFecha.setText(formatoFecha.format(fecha).toString());
 
+
+//      Boton eliminar.
+        void prueba(){
+
+            //Toast.makeText(this, "Se activo el boton eliminar", Toast.LENGTH_SHORT).show();
+            tabla.removeView(fila);
+
+        }
+
+    
+
+        viewDelete.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v){
+                prueba();}
+
+        });
+
+
+
+
+
+//      Agregando todas las views a a la fila y tabla.
         fila.addView(viewFecha);
         viewCliente.setText(clientes.getSelectedItem().toString()); //clientes.getSelectedItem().toString()
         fila.addView(viewCliente);
@@ -97,7 +125,10 @@ public class Lista extends AppCompatActivity {
         total = (Integer.parseInt(viewFrances.getText().toString())+Integer.parseInt(viewManteca.getText().toString()));
         viewTotal.setText(Integer.valueOf(total).toString());
         fila.addView(viewTotal);
+        fila.addView(viewDelete);
         tabla.addView(fila, 1);
+
+
 
     }
 }
