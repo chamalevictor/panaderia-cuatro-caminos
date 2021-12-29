@@ -95,27 +95,6 @@ public class Lista extends AppCompatActivity {
         viewFecha.setText(formatoFecha.format(fecha).toString());
 
 
-//      Boton eliminar.
-        void prueba(){
-
-            //Toast.makeText(this, "Se activo el boton eliminar", Toast.LENGTH_SHORT).show();
-            tabla.removeView(fila);
-
-        }
-
-    
-
-        viewDelete.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v){
-                prueba();}
-
-        });
-
-
-
-
-
 //      Agregando todas las views a a la fila y tabla.
         fila.addView(viewFecha);
         viewCliente.setText(clientes.getSelectedItem().toString()); //clientes.getSelectedItem().toString()
@@ -127,7 +106,6 @@ public class Lista extends AppCompatActivity {
         fila.addView(viewTotal);
         fila.addView(viewDelete);
         tabla.addView(fila, 1);
-
 
 
     }
